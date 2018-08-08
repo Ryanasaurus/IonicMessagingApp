@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+      <!-- <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button> -->
+    <ion-title>Register</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" #email></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" #password></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Username</ion-label>
+      <ion-input type="text" #user></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button (click)="registerUser()" full>Register</button>
+
+</ion-content>
