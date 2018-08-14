@@ -20,11 +20,13 @@ export class ChannelPage {
 
   message: string = '';
   messages: Observable<{}>;
+  //messages: Observable<any>;
   _chatSubscription;
 
   constructor(private afAuth: AngularFireAuth, public db: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
     db.object('channels/general').valueChanges().subscribe(data => {
       this.messages.subscribe(data);
+      // this.messages = data;
     });
     // console.log(this.messages);
   }
