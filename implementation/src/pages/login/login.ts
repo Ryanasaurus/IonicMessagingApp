@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
-import { SplashPage } from '../splash/splash';
+import { ChannelPage } from '../channel/channel';
 
 /**
  * Generated class for the LoginPage page.
@@ -42,7 +42,7 @@ export class LoginPage {
       .then(data=> {
         console.log(this.afAuth.auth.currentUser);
         this.alert('Success!');
-        this.navCtrl.setRoot(SplashPage);
+        this.navCtrl.setRoot(ChannelPage);
       })
       .catch(error => {
         console.log(error);

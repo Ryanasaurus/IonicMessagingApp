@@ -3,6 +3,11 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { SplashPage } from '../splash/splash';
 
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, AngularFireAction } from 'angularfire2/database';
+
+import { ChannelPage } from '../channel/channel';
+import { Observable, BehaviorSubject } from '../../../node_modules/rxjs';
+import { switchMap } from '../../../node_modules/rxjs/operators';
 
 /**
  * Generated class for the RegisterPage page.
@@ -22,7 +27,10 @@ export class RegisterPage {
   @ViewChild('password') password;
   @ViewChild('user') user;
 
-  constructor(private alertCtrl: AlertController, private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+  items$: Observable<AngularFireAction<firebase.database.DataSnapshot>[]>;
+  size$: BehaviorSubject<string|null>;
+
+  constructor(private db: AngularFireDatabase, private alertCtrl: AlertController, private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -42,7 +50,10 @@ export class RegisterPage {
       .then(data => {
         console.log('got data ', data);
         this.alert('Registered!');
-        this.navCtrl.setRoot(SplashPage);
+        this.db.list('users/').push({
+          email: this.email.value
+        })
+        this.navCtrl.setRoot(ChannelPage);
       })
       .catch(error => {
         console.log(error);
