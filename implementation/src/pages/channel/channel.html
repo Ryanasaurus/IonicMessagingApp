@@ -7,19 +7,25 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Channel</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{channelName}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <div id="chatMessages">
-    <!-- <div class="sentMessage" *ngFor="let message of messages">
+  <div id="chatMessages" *ngIf="messages">
+    <div class="sentMessage" *ngFor="let message of messages">
       <div class="username">{{ message.username }}</div>
       <div class="message">{{ message.message }}</div>
-    </div> -->
+    </div>
   </div>  
+  <div *ngIf="!messages">
+    Loading
+  </div>
 </ion-content>
 
 <ion-footer>

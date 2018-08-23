@@ -10,6 +10,8 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { SplashPage } from '../pages/splash/splash';
 import { ChannelPage } from '../pages/channel/channel';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs-compat';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,7 +23,10 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(private afAuth: AngularFireAuth, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  channels;
+  _chatSubscription;
+
+  constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -33,6 +38,20 @@ export class MyApp {
       { title: 'Channel', component: ChannelPage }
     ];
 
+    this._chatSubscription = db.list('channels/').valueChanges().subscribe(data => {
+      this.channels = data;
+      console.log(this.channels);
+    }),(err) => {
+      console.log('error: ', err)
+    };
+
+  }
+
+  goToChannel(channel: string) {
+    console.log(channel);
+    this.nav.setRoot(ChannelPage, {
+      channelName: channel
+    });
   }
 
   initializeApp() {

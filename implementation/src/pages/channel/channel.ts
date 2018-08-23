@@ -2,14 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Observable } from '../../../node_modules/rxjs';
-
-/**
- * Generated class for the ChannelPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Observable } from 'rxjs-compat';
+// import { map } from 'rxjs-compat/operators';
 
 @IonicPage()
 @Component({
@@ -19,28 +13,30 @@ import { Observable } from '../../../node_modules/rxjs';
 export class ChannelPage {
 
   message: string = '';
-  messages: Observable<{}>;
-  //messages: Observable<any>;
+  messages;
   _chatSubscription;
 
+  channelName: string;
+
   constructor(private afAuth: AngularFireAuth, public db: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
-    db.object('channels/general').valueChanges().subscribe(data => {
-      this.messages.subscribe(data);
-      // this.messages = data;
-    });
-    // console.log(this.messages);
+    this.channelName = this.navParams.get('channelName');
+    this._chatSubscription = db.list('channels/' + this.channelName).valueChanges().subscribe(data => {
+      this.messages = data;
+      console.log(this.messages);
+    }),(err) => {
+      console.log('error: ', err)
+    };
   }
 
 
   ionViewDidLoad() {
-    console.log(this.afAuth.auth.currentUser.email);
     console.log('ionViewDidLoad ChannelPage');
-    console.log(this.messages);
   }
 
   
   sendMessage() {
-    this.db.list('channels/general').push({
+    console.log(this.messages);
+    this.db.list('channels/' + this.channelName).push({
       username: this.afAuth.auth.currentUser.email,
       message: this.message
     }).then(() => {

@@ -7,8 +7,15 @@
 
   <ion-content>
     <ion-list>
-      <button ion-button menuToggle (click)="signOut()" item-left round>Sign Out</button>
+        <div id="channels" *ngIf="channels">
+          <div class = "channels" *ngFor="let channel of channels">
+            <div class="channel">
+              <button ion-button menuToggle (click)="goToChannel(channel.title)">{{ channel.title }}</button>
+            </div>
+          </div>
+        </div>
     </ion-list>
+    <button ion-button menuToggle (click)="signOut()" item-left round>Sign Out</button>
   </ion-content>
 
 </ion-menu>
