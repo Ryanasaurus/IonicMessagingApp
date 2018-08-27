@@ -16,10 +16,11 @@ export class ChannelPage {
   messages;
   _chatSubscription;
 
-  channelName: string;
+  // channelName: string;
+  channelName: string = 'general';
 
   constructor(private afAuth: AngularFireAuth, public db: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
-    this.channelName = this.navParams.get('channelName');
+    // this.channelName = this.navParams.get('channelName');
     this._chatSubscription = db.list('channels/' + this.channelName).valueChanges().subscribe(data => {
       this.messages = data;
       console.log(this.messages);
@@ -31,6 +32,10 @@ export class ChannelPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChannelPage');
+  }
+
+  checkLoggedInUser(user: string) {
+    return user == this.afAuth.auth.currentUser.email;
   }
 
   

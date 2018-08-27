@@ -1,15 +1,23 @@
 <ion-header>
 
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title></ion-title>
+    <ion-title>MessageApp 5000</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-list>
+    <div id="channels" *ngIf="channels">
+      <div class = "channels" *ngFor="let channel of channels">
+        <div class="channel">
+          <button ion-button (click)="goToChannel(channel.title)">{{ channel.title }}</button>
+        </div>
+      </div>
+    </div>
+  </ion-list>
+  <button ion-button menuToggle (click)="signOut()" item-left round>Sign Out</button>
 
 </ion-content>

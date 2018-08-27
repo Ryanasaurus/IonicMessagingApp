@@ -5,7 +5,6 @@ import { SplashPage } from '../splash/splash';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, AngularFireAction } from 'angularfire2/database';
 
-import { ChannelPage } from '../channel/channel';
 import { Observable, BehaviorSubject } from '../../../node_modules/rxjs';
 import { switchMap } from '../../../node_modules/rxjs/operators';
 
@@ -53,7 +52,7 @@ export class RegisterPage {
         this.db.list('users/').push({
           email: this.email.value
         })
-        this.navCtrl.setRoot(ChannelPage);
+        this.navCtrl.setRoot(SplashPage);
       })
       .catch(error => {
         console.log(error);

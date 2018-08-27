@@ -18,9 +18,12 @@
 
 <ion-content padding>
   <div id="chatMessages" *ngIf="messages">
-    <div class="sentMessage" *ngFor="let message of messages">
-      <div class="username">{{ message.username }}</div>
-      <div class="message">{{ message.message }}</div>
+    <div *ngFor="let message of messages">
+      <div *ngIf="message.message != null" [class]="checkLoggedInUser(message.username) ? 'innerMessage messageRight' : 'innerMessage messageLeft'">
+        <div class="username">{{ message.username }}</div>
+        <div class="messageContent">{{ message.message }}</div>
+        <br>
+      </div>
     </div>
   </div>  
   <div *ngIf="!messages">
@@ -30,7 +33,7 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-input type="text" [(ngModel)]="message" placeholder="Type to send a message..."></ion-input>
-    <button ion-button icon-only (click)="sendMessage()"><ion-icon name="send"></ion-icon></button>
+    <div class="textInput"><ion-input type="text" [(ngModel)]="message" placeholder="Type to send a message..."></ion-input></div>
+    <div class="sendButton"><button ion-button icon-only top-right (click)="sendMessage()"><ion-icon name="send"></ion-icon></button></div>
   </ion-toolbar>
 </ion-footer>
