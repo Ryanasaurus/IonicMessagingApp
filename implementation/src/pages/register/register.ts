@@ -5,7 +5,6 @@ import { SplashPage } from '../splash/splash';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, AngularFireAction } from 'angularfire2/database';
 
-import { ChannelPage } from '../channel/channel';
 import { Observable, BehaviorSubject } from '../../../node_modules/rxjs';
 import { switchMap } from '../../../node_modules/rxjs/operators';
 
