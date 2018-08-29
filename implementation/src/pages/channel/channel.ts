@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs-compat';
@@ -11,6 +11,8 @@ import { Observable } from 'rxjs-compat';
   templateUrl: 'channel.html',
 })
 export class ChannelPage {
+
+  @ViewChild(Content) content: Content;
 
   message: string = '';
   messages;
@@ -29,9 +31,13 @@ export class ChannelPage {
     };
   }
 
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChannelPage');
+  }
+
+  scrollDown() {
+    // console.log("test");
+    this.content.scrollToBottom(0);
   }
 
   checkLoggedInUser(user: string) {

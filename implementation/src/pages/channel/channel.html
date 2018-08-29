@@ -18,13 +18,14 @@
 
 <ion-content padding>
   <div id="chatMessages" *ngIf="messages">
-    <div *ngFor="let message of messages">
+    <ion-item *ngFor="let message of messages; let last = last">
       <div *ngIf="message.message != null" [class]="checkLoggedInUser(message.username) ? 'innerMessage messageRight' : 'innerMessage messageLeft'">
         <div class="username">{{ message.username }}</div>
         <div class="messageContent">{{ message.message }}</div>
         <br>
-      </div>
-    </div>
+      </div>      
+      {{ last ? scrollDown() : '' }}
+    </ion-item>
   </div>  
   <div *ngIf="!messages">
     Loading
