@@ -25,7 +25,7 @@ export class ChannelPage {
     // this.channelName = this.navParams.get('channelName');
     this._chatSubscription = db.list('channels/' + this.channelName).valueChanges().subscribe(data => {
       this.messages = data;
-      console.log(this.messages);
+      // console.log(this.messages);
     }),(err) => {
       console.log('error: ', err)
     };
@@ -42,7 +42,6 @@ export class ChannelPage {
   checkLoggedInUser(user: string) {
     return user == this.afAuth.auth.currentUser.email;
   }
-
   
   sendMessage() {
     console.log(this.messages);

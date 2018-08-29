@@ -12,6 +12,7 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { SplashPage } from '../pages/splash/splash';
 import { ChannelPage } from '../pages/channel/channel';
+import { UserPage } from '../pages/user/user';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -33,6 +34,7 @@ const firebaseConfig = {
     RegisterPage,
     SplashPage,
     ChannelPage,
+    UserPage,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +51,7 @@ const firebaseConfig = {
     RegisterPage,
     SplashPage,
     ChannelPage,
+    UserPage,
   ],
   providers: [
     StatusBar,

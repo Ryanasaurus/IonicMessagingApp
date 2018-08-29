@@ -24,7 +24,6 @@ export class RegisterPage {
 
   @ViewChild('email') email;
   @ViewChild('password') password;
-  @ViewChild('user') user;
 
   items$: Observable<AngularFireAction<firebase.database.DataSnapshot>[]>;
   size$: BehaviorSubject<string|null>;
@@ -36,9 +35,9 @@ export class RegisterPage {
     console.log('ionViewDidLoad RegisterPage');
   }
 
-  alert(message: string) {
+  alert(title: string, message: string) {
     this.alertCtrl.create({
-      title: 'Info!',
+      title: title,
       subTitle: message,
       buttons: ['OK']
     }).present();
@@ -48,15 +47,15 @@ export class RegisterPage {
     this.afAuth.auth.createUserWithEmailAndPassword(this.email.value, this.password.value)
       .then(data => {
         console.log('got data ', data);
-        this.alert('Registered!');
-        this.db.list('users/').push({
-          email: this.email.value
-        })
+        this.alert('Registered', 'Successfully registered for MessageApp 5000');
+        // this.db.list('users/').push({
+        //   email: this.email.value,
+        // })
         this.navCtrl.setRoot(SplashPage);
       })
       .catch(error => {
         console.log(error);
-        this.alert(error.message);
+        this.alert('Alert', error.message);
       })
   }
 
