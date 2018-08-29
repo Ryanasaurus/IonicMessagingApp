@@ -36,7 +36,6 @@ export class ChannelPage {
   }
 
   scrollDown() {
-    // console.log("test");
     this.content.scrollToBottom(0);
   }
 

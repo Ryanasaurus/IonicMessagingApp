@@ -18,7 +18,7 @@
 
 <ion-content padding>
   <div id="chatMessages" *ngIf="messages">
-    <ion-item *ngFor="let message of messages; let last = last">
+    <ion-item text-wrap *ngFor="let message of messages; let last = last">
       <div *ngIf="message.message != null" [class]="checkLoggedInUser(message.username) ? 'innerMessage messageRight' : 'innerMessage messageLeft'">
         <div class="username">{{ message.username }}</div>
         <div class="messageContent">{{ message.message }}</div>

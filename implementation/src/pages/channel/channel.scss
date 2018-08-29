@@ -5,6 +5,8 @@ page-chat {
     border-radius: 10px;
     padding-top: 5px;
     margin-bottom: 2%;
+    padding-left: 10px;
+    padding-right: 10px;
 }
     
 .username {
@@ -33,11 +35,12 @@ page-chat {
    
 .textInput {
     float: left;
+    margin-right: 15%;
 }
     
 .sendButton {
     float: right;
-    padding-right: 20px;
+    // padding-right: 20px;
 }
 
 	
