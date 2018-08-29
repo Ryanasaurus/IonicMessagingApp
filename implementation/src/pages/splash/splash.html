@@ -1,10 +1,12 @@
 <ion-header>
 
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
     <ion-title>MessageApp 5000</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="settings()" icon-only>
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -21,7 +23,10 @@
       </div>
     </div>
   </ion-list>
-  <button ion-button id="settings" (click)="settings()" item-left color="light" full>Settings</button>
-  <button ion-button id="signOut" (click)="signOut()" item-left round color="light" full>Sign Out</button>
+  <div *ngIf="noChannels()">
+    <button ion-button (click)="showCreateChannelPrompt()" item-left color="secondary" full>Create a Channel</button>
+    <br>
+  </div>
+  <button ion-button id="signOut" (click)="signOut()" item-left color="danger" full>Sign Out</button>
 
 </ion-content>

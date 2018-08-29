@@ -48,9 +48,6 @@ export class RegisterPage {
       .then(data => {
         console.log('got data ', data);
         this.alert('Registered', 'Successfully registered for MessageApp 5000');
-        // this.db.list('users/').push({
-        //   email: this.email.value,
-        // })
         this.navCtrl.setRoot(SplashPage);
       })
       .catch(error => {

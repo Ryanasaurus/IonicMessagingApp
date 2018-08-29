@@ -1,12 +1,28 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>user</ion-title>
+    <ion-title>Settings</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding>  
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" #email></ion-input>
+    </ion-item>
+    <button ion-button (click)="updateEmail()" item-left round full>Update Email</button>    
 
+    <br>
+
+    <ion-item>
+      <ion-label floating>Old Password</ion-label>
+      <ion-input type="password" #oldPassword></ion-input>
+    </ion-item>      
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" #newPassword></ion-input>
+    </ion-item>
+    <button ion-button (click)="updatePassword()" item-left round full>Update Password</button>    
 </ion-content>

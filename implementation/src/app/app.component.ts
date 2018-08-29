@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, AlertController } from 'ionic-angular';
+import { Nav, Platform, AlertController, NavParams } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -20,7 +20,7 @@ import { Observable } from 'rxjs-compat';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = SplashPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -56,6 +56,10 @@ export class MyApp {
     });
   }
 
+  settings() {
+    this.nav.push(UserPage);
+  }
+
   createChannel(name: string) {
     if(name == '') {
       this.alert('Invalid Name', 'Channels must have a name');
@@ -69,7 +73,10 @@ export class MyApp {
     });
     this.db.list('channels/').push({
       title: name,
-    })
+    });
+    this.nav.setRoot(ChannelPage, {
+      channelName: name
+    });
   }
 
   alert(title: string, message: string) {
