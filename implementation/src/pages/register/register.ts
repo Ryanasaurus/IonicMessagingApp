@@ -53,7 +53,7 @@ export class RegisterPage {
         this.db.list('users/').push({
           email: this.email.value
         })
-        this.navCtrl.setRoot(ChannelPage);
+        this.navCtrl.setRoot(SplashPage);
       })
       .catch(error => {
         console.log(error);

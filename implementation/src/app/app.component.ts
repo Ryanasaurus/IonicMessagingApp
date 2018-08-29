@@ -19,7 +19,7 @@ import { Observable } from 'rxjs-compat';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = ChannelPage;
 
   pages: Array<{title: string, component: any}>;
 

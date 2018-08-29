@@ -1,7 +1,7 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Test</ion-title>
+      <ion-title>MessageApp 5000</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -10,12 +10,12 @@
         <div id="channels" *ngIf="channels">
           <div class = "channels" *ngFor="let channel of channels">
             <div class="channel">
-              <button ion-button menuToggle (click)="goToChannel(channel.title)">{{ channel.title }}</button>
+              <button ion-button menuToggle (click)="goToChannel(channel.title)" color="light" full>{{ channel.title }}</button>
             </div>
           </div>
         </div>
     </ion-list>
-    <button ion-button menuToggle (click)="signOut()" item-left round>Sign Out</button>
+    <button ion-button menuToggle id="signOut" (click)="signOut()" item-left round color="light" full>Sign Out</button>
   </ion-content>
 
 </ion-menu>
