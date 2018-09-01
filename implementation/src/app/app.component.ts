@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, AlertController, NavParams } from 'ionic-angular';
+import { Nav, Platform, AlertController, NavParams, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -27,7 +27,7 @@ export class MyApp {
   channels;
   _chatSubscription;
 
-  constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private alertCtrl: AlertController) {
+  constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private alertCtrl: AlertController, private menuCtrl: MenuController) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -108,6 +108,7 @@ export class MyApp {
             console.log('channel created');
             console.log(data);
             this.createChannel(data.name);
+            this.menuCtrl.toggle();
           }
         },
         {

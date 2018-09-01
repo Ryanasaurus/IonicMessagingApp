@@ -30,7 +30,7 @@ export class ChannelPage {
     .then(data => {
       this.userID = data;
     });
-    this._chatSubscription = db.list('channels/' + this.channelName).valueChanges().subscribe(data => {
+    this._chatSubscription = db.list('messages/' + this.channelName).valueChanges().subscribe(data => {
       this.messages = data;
     }),(err) => {
       console.log('error: ', err)
@@ -55,7 +55,7 @@ export class ChannelPage {
   
   sendMessage() {
     console.log(this.messages);
-    this.db.list('channels/' + this.channelName).push({
+    this.db.list('messages/' + this.channelName).push({
       username: this.afAuth.auth.currentUser.email,
       userID: this.userID,
       message: this.message
